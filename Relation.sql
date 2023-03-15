@@ -98,7 +98,7 @@ CREATE TABLE Assigments(
     StudentID INT NOT NULL,
     CourseID INT NOT NULL,
     AssignmentNo INT NOT NULL,
-    Marks INT NOT NULL,
+    Mark INT NOT NULL,
     DateAssigned DATE NOT NULL,
     DateDue DATE NOT NULL,
     PRIMARY KEY(StudentID, CourseID),
@@ -106,7 +106,7 @@ CREATE TABLE Assigments(
     FOREIGN KEY(CourseID) REFERENCES Courses(CourseID)
 );
 
-INSERT INTO Assigments (StudentID, CourseID, ExamPercentage, TestsPercentage, Assignments) VALUES
+INSERT INTO Assigments (StudentID, CourseID, AssignmentNo, Marks, DateAssigned, DateDue) VALUES
 (128569, 2001, 1, 100, '01-01-2023', '07-01-2023'),
 (128569, 2001, 2, 100, '07-01-2023', '14-01-2023'),
 (128569, 2001, 3, 90, '14-01-2023', '21-01-2023'),
@@ -119,32 +119,63 @@ INSERT INTO Assigments (StudentID, CourseID, ExamPercentage, TestsPercentage, As
 (128163, 2004, 1, 10, '01-01-2023', '07-01-2023'),
 (128163, 2004, 2, 0, '07-01-2023', '14-01-2023'),
 (128163, 2004, 3, 12, '14-01-2023', '21-01-2023'),
-(128163, 2004, 35, 24, 30),
-(128309, 2032, 94, 89, 100),
-(128442, 2016, 55, 53, 70),
-(128369, 2002, 76, 62, 100);
+(128309, 2032, 1, 100, '01-01-2023', '07-01-2023'),
+(128309, 2032, 2, 100, '07-01-2023', '14-01-2023'),
+(128309, 2032, 3, 100, '14-01-2023', '21-01-2023'),
+(128442, 2016, 1, 60, '01-01-2023', '07-01-2023'),
+(128442, 2016, 2, 80, '07-01-2023', '14-01-2023'),
+(128442, 2016, 3, 50, '14-01-2023', '21-01-2023'),
+(128369, 2002, 1, 100, '01-01-2023', '07-01-2023'),
+(128369, 2002, 2, 100, '07-01-2023', '14-01-2023'),
+(128369, 2002, 3, 100, '14-01-2023', '21-01-2023');
 
 CREATE TABLE Tests(
     StudentID INT NOT NULL,
     CourseID INT NOT NULL,
     TestNo INT NOT NULL,
-    DATETaken DATE NOT NULL,
+    Mark INT NOT NULL,
+    DateTaken DATE NOT NULL,
     PRIMARY KEY(StudentID, CourseID),
     FOREIGN KEY(StudentID) REFERENCES Students(StudentID),
     FOREIGN KEY(CourseID) REFERENCES Courses(CourseID)
 );
+
+INSERT INTO Tests (StudentID, CourseID, TestNo, Mark, DateTaken) VALUES
+(128569, 2001, 1, 51, '01-01-2023'),
+(128569, 2001, 2, 52, '14-01-2023'),
+(128534, 2032, 1, 21, '01-01-2023'),
+(128534, 2032, 2, 24, '14-01-2023'),
+(128725, 2016, 1, 71, '01-01-2023'),
+(128725, 2016, 2, 64, '14-01-2023'),
+(128163, 2004, 1, 10, '01-01-2023'),
+(128163, 2004, 2, 5, '14-01-2023'),
+(128309, 2032, 1, 90, '01-01-2023'),
+(128309, 2032, 2, 82, '14-01-2023'),
+(128442, 2016, 1, 52, '01-01-2023'),
+(128442, 2016, 2, 51, '14-01-2023'),
+(128369, 2002, 1, 52, '01-01-2023'),
+(128369, 2002, 2, 66, '14-01-2023');
 
 CREATE TABLE Exam(
     StudentID INT NOT NULL,
     CourseID INT NOT NULL,
     ExamNo INT NOT NULL,
     ExamMark INT NOT NULL,
-    DATETaken DATE NOT NULL,
+    DateTaken DATE NOT NULL,
     ExamType VARCHAR(5) NOT NULL DEFAULT "Final",
     PRIMARY KEY(StudentID, CourseID),
     FOREIGN KEY(StudentID) REFERENCES Students(StudentID),
     FOREIGN KEY(CourseID) REFERENCES Courses(CourseID)
 );
+
+INSERT INTO Exam (StudentID, CourseID, ExamNo, ExamMark, DateTaken, ExamType) VALUES
+(128569, 2001, 12, 60, '01-01-2023', "Final"),
+(128569, 2001, 24, 40, '14-01-2023', "Final"),
+(128534, 2032, 45, 80, '01-01-2023', "Final"),
+(128534, 2032, 21, 35, '14-01-2023', "Final"),
+(128725, 2016, 56, 94, '01-01-2023', "Final"),
+(128725, 2016, 76, 55, '14-01-2023', "Final"),
+(128163, 2004, 14, 76, '01-01-2023', "Final"),
 
 CREATE TABLE Module(
     ModuleID INT NOT NULL AUTO_INCREMENT,
@@ -159,7 +190,8 @@ INSERT INTO Module (ModuleID, ModuleName) VALUES
 (127, 'Algorithm'),
 (129, 'Human-Computer Interaction'),
 (125, 'Network Security'),
-(126, 'Analytics');
+(126, 'Analytics'),
+(130, 'Program Efficiency');
 
 CREATE TABLE Includes ( 
     ModuleID INT NOT NULL,
@@ -168,6 +200,16 @@ CREATE TABLE Includes (
     FOREIGN KEY (CourseID) REFERENCES Courses(CourseID),
     FOREIGN KEY (ModuleID) REFERENCES Module(ModuleID)
 );
+
+INSERT INTO Includes (ModuleID, CourseID) VALUES
+(123, 2004),
+(124, 1010),
+(122, 1000),
+(127, 2032),
+(129, 2016),
+(125, 2001),
+(126, 3001),
+(130, 2002),
 
 CREATE TABLE Stuff(
     StuffID INT NOT NULL AUTO_INCREMENT,
@@ -193,6 +235,15 @@ CREATE TABLE TelephoneStuff (
     PRIMARY KEY(StuffID),
     FOREIGN KEY(StuffID) REFERENCES Stuff(StuffID) 
 );
+
+INSERT INTO Stuff (StuffID, Sex, StuffEmail, Salary, Address) VALUES
+(028563, '+27 21 650 1234'),
+(035569, '+27 21 660 2468'),
+(024639, '+27 21 650 1357'),
+(015879, '+27 21 670 9182'),
+(042810, '+27 21 660 1428'),
+(012845, '+27 21 680 7050'),
+(064972, '+27 21 650 5136');
 
 CREATE TABLE Lectures ( 
     ModuleID INT NOT NULL,
