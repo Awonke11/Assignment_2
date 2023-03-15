@@ -236,7 +236,7 @@ CREATE TABLE TelephoneStuff (
     FOREIGN KEY(StuffID) REFERENCES Stuff(StuffID) 
 );
 
-INSERT INTO Stuff (StuffID, Sex, StuffEmail, Salary, Address) VALUES
+INSERT INTO TelephoneStuff (StuffID, telephoneStuff) VALUES
 (028563, '+27 21 650 1234'),
 (035569, '+27 21 660 2468'),
 (024639, '+27 21 650 1357'),
