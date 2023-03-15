@@ -149,7 +149,7 @@ CREATE TABLE IsATutor (
     StuffID INT NOT NULL,
     PRIMARY KEY (StuffID, StudentID),
     FOREIGN KEY (StuffID) REFERENCES Stuff(StuffID),
-    FOREIGN KEY (StudentID) REFERENCES students(StudentID)
+    FOREIGN KEY (StudentID) REFERENCES Students(StudentID)
 );
 
 CREATE TABLE Department (
