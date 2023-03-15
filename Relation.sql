@@ -175,7 +175,7 @@ INSERT INTO Exam (StudentID, CourseID, ExamNo, ExamMark, DateTaken, ExamType) VA
 (128534, 2032, 21, 35, '14-01-2023', "Final"),
 (128725, 2016, 56, 94, '01-01-2023', "Final"),
 (128725, 2016, 76, 55, '14-01-2023', "Final"),
-(128163, 2004, 14, 76, '01-01-2023', "Final"),
+(128163, 2004, 14, 76, '01-01-2023', "Final");
 
 CREATE TABLE Module(
     ModuleID INT NOT NULL AUTO_INCREMENT,
@@ -227,7 +227,7 @@ INSERT INTO Stuff (StuffID, Sex, StuffEmail, Salary, Address) VALUES
 (015879, 'F', '015879@myuct.ac.za', 280000, '11 Indian Queen Ln, Bellvile'),
 (042810, 'F', '042810@myuct.ac.za', 300000, '07 Phill-Ellena Av, Weinberg'),
 (012845, 'M', '012845@myuct.ac.za', 350000, '04 Dicks Rd, Observatory'),
-(064972, 'F', '064972@myuct.ac.za', 250000, '16 Church St,Claremont');
+(064972, 'F', '064972@myuct.ac.za', 250000, '16 Church St,Claremont'),
 (894623, 'F', '894623@myuct.ac.za', 450000, '27 Lamb St,Claremont');
 
 CREATE TABLE TelephoneStuff ( 
@@ -244,7 +244,7 @@ INSERT INTO TelephoneStuff (StuffID, telephoneStuff) VALUES
 (015879, '+27 21 670 9182'),
 (042810, '+27 21 660 1428'),
 (012845, '+27 21 680 7050'),
-(064972, '+27 21 650 5136');
+(064972, '+27 21 650 5136'),
 (894623, '+27 21 650 5136');
 
 CREATE TABLE Lectures ( 
