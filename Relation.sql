@@ -319,14 +319,34 @@ CREATE TABLE Department (
     PRIMARY KEY(DepartmentID)
 );
 
+INSERT INTO Department (DepartmentID, DepartmentName) VALUES
+(028534, "Electrical"),
+(035545, "Ecomomics"),
+(024675, "Science"),
+(015812, "Accounting"),
+(894690, "Marketing");
+(024689, "Business"),
+(015809, "Statitics"),
+(894342, "Computer");
+
 CREATE TABLE WorksIn (
-    DepartmentID INT NOT NULL,
     StuffID INT NOT NULL,
+    DepartmentID INT NOT NULL,
     YearEmployed DATE NOT NULL,
     PRIMARY KEY(StuffID),
     FOREIGN KEY (StuffID) REFERENCES Stuff(StuffID),
     FOREIGN KEY (DepartmentID) REFERENCES Department(DepartmentID)
 );
+
+INSERT INTO WorksIn (StuffID, DepartmentID, YearEmployed) VALUES
+(028563, 028534, "01-05-2021"),
+(035569, 035545, "01-05-2023"),
+(024639, 024675, "01-05-2022"),
+(015879, 015812, "01-05-2020"),
+(042810, 894690, "01-05-2022");
+(012845, 024689, "01-05-2019"),
+(064972, 015809, "01-05-2018"),
+(894623, 894342, "01-05-2017");
 
 CREATE TABLE InDepartment( 
     DepartmentID INT NOT NULL,
@@ -335,3 +355,13 @@ CREATE TABLE InDepartment(
     FOREIGN KEY (CourseID) REFERENCES Courses(CourseID),
     FOREIGN KEY (DepartmentID) REFERENCES Department(DepartmentID)
 );
+
+INSERT INTO Department (DepartmentID, CourseID) VALUES
+(028534, 2004),
+(035545, 1010),
+(024675, 1000),
+(015812, 2032),
+(894690, 2016);
+(024689, 2001),
+(015809, 3001),
+(894342, 2002);
