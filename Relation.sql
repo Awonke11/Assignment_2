@@ -209,7 +209,7 @@ INSERT INTO Includes (ModuleID, CourseID) VALUES
 (129, 2016),
 (125, 2001),
 (126, 3001),
-(130, 2002),
+(130, 2002);
 
 CREATE TABLE Stuff(
     StuffID INT NOT NULL AUTO_INCREMENT,
@@ -228,6 +228,7 @@ INSERT INTO Stuff (StuffID, Sex, StuffEmail, Salary, Address) VALUES
 (042810, 'F', '042810@myuct.ac.za', 300000, '07 Phill-Ellena Av, Weinberg'),
 (012845, 'M', '012845@myuct.ac.za', 350000, '04 Dicks Rd, Observatory'),
 (064972, 'F', '064972@myuct.ac.za', 250000, '16 Church St,Claremont');
+(894623, 'F', '894623@myuct.ac.za', 450000, '27 Lamb St,Claremont');
 
 CREATE TABLE TelephoneStuff ( 
     StuffID INT NOT NULL,
@@ -244,6 +245,7 @@ INSERT INTO TelephoneStuff (StuffID, telephoneStuff) VALUES
 (042810, '+27 21 660 1428'),
 (012845, '+27 21 680 7050'),
 (064972, '+27 21 650 5136');
+(894623, '+27 21 650 5136');
 
 CREATE TABLE Lectures ( 
     ModuleID INT NOT NULL,
@@ -255,12 +257,26 @@ CREATE TABLE Lectures (
     FOREIGN KEY (StuffID) REFERENCES Stuff(StuffID)
 );
 
+INSERT INTO Lectures (StuffID, StuffID, Venue, YearLec) VALUES
+(028563, 028563, "TestVenue", "03-05-2023"),
+(035569, 035569, "TestVenue", "03-05-2023"),
+(024639, 024639, "TestVenue", "03-05-2023"),
+(015879, 015879, "TestVenue", "03-05-2023"),
+(042810, 042810, "TestVenue", "03-05-2023"),
+(012845, 012845, "TestVenue", "03-05-2023"),
+(064972, 064972, "TestVenue", "03-05-2023"),
+(894623, 894623, "TestVenue", "03-05-2023");
+
 CREATE TABLE Tutor ( 
     StuffID INT NOT NULL,
-    Period VARCHAR(10) NOT NULL,
+    Semester VARCHAR(1) NOT NULL,
     PRIMARY KEY(StuffID),
     FOREIGN KEY(StuffID) REFERENCES  Stuff(StuffID) 
 );
+
+INSERT INTO Tutor (StuffID, Semester) VALUES
+(042810, "S"),
+(012845, "F");
 
 CREATE TABLE Lecture (
     StuffID INT NOT NULL,   
@@ -269,12 +285,25 @@ CREATE TABLE Lecture (
     FOREIGN KEY(StuffID) REFERENCES Stuff(StuffID) 
 );
 
+INSERT INTO Lecture (StuffID, OfficeNumber) VALUES
+(028563, "MEC10"),
+(035569, "ASC45"),
+(024639, "MEC01"),
+(015879, "ENG24");
+
 CREATE TABLE Convener (
     StuffID INT NOT NULL,
     OfficeNumber VARCHAR(10) NOT NULL,
     PRIMARY KEY(StuffID),
     FOREIGN KEY(StuffID) REFERENCES Stuff(StuffID) 
 );
+
+INSERT INTO Convener (StuffID, OfficeNumber) VALUES
+(028563, "MEC10"),
+(035569, "ASC45"),
+(024639, "MEC01"),
+(015849, "ENG24"),
+(894645, "ASC40");
 
 CREATE TABLE IsATutor ( 
     StudentID INT NOT NULL,
