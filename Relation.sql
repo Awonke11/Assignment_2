@@ -14,9 +14,9 @@ CREATE TABLE Students(
 INSERT INTO Students (StudentsID, StudentNumber, Name,  Surname, Sex, DOB, Address, StudentEmail, Grad) VALUES
 (128569, 'S18_1749', 'Thabo', 'Maliea', 'M', '2002-06-27', '12 Kellner St, Mowbray', 'S18_1749@myuct.ac.za', 'Undergrad'),
 (128534, 'S18_2248','David', 'Moloi', 'M', '2002-04-17', '20 Durban Rd, Observatory', 'S18_22489@myuct.ac.za', 'Undergrad' ),
-(128725, 'S18_4409','John', 'Johnson', 'M', '2001-09-23', '15 Browning Rd, Rodenbosch', 'S18_4409@myuct.ac.za', 'Undergrad'),
+(128725, 'S18_4409','John', 'Johnson', 'M', '2001-09-23', '15 Browning Rd, Rodenbosch', 'S18_4409@myuct.ac.za', 'Postgrad'),
 (128163, 'S24_3969', 'Salome', 'Mukwevho', 'F', '2002-02-28', '11 Waltz St, Mowbray', 'S24_3969@myuct.ac.za', 'Undergrad'),
-(128309, 'S18_2325','Kate', 'Spears', 'F', '2002-01-01', '5 Victoria St, Woodstock', 'S18_2325@myuct.ac.za', 'Undergrad'),
+(128309, 'S18_2325','Kate', 'Spears', 'F', '2002-01-01', '5 Victoria St, Woodstock', 'S18_2325@myuct.ac.za', 'Postgrad'),
 (128442, 'S18_2795', 'Rajesh', 'Gupta', 'M', '2000-10-22', '14 Loop St, Claremont', 'S18_2795@myuct.ac.za', 'Undergrad'),
 (128369, 'S24_1937','Millicent', 'Zulu', 'F', '2002-05-13', '21 Baker St, Woodstock', 'S24_1937@myuct.ac.za', 'Undergrad');
 
@@ -306,12 +306,22 @@ INSERT INTO Convener (StuffID, OfficeNumber) VALUES
 (894645, "ASC40");
 
 CREATE TABLE IsATutor ( 
-    StudentID INT NOT NULL,
     StuffID INT NOT NULL,
+    StudentID INT NOT NULL,
     PRIMARY KEY (StuffID, StudentID),
     FOREIGN KEY (StuffID) REFERENCES Stuff(StuffID),
     FOREIGN KEY (StudentID) REFERENCES Students(StudentID)
 );
+
+INSERT INTO WorksIn (StuffID, IsATutor) VALUES
+(028563, 128569),
+(035569, 128534),
+(024639, 128725),
+(015879, 128163),
+(042810, 128309);
+(012845, 128442),
+(064972, 128163),
+(894623, 128369);
 
 CREATE TABLE Department (
     DepartmentID INT NOT NULL AUTO_INCREMENT,
